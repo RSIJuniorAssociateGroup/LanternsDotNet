@@ -2,7 +2,7 @@
 
 namespace LanternsDotNet.Migrations
 {
-    public partial class LanternCard : Migration
+    public partial class LakeTileColor : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

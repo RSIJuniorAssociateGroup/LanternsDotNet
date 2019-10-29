@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace LanternsDotNet.Models
 {
-    public class LakeTile
+    public class LakeTileColor
     {
         [Key]
 
-        public Guid LakeTileId { get; set; }
-       
-        public int LakeTileLakeTileColor { get; set; }
+        public Guid LakeTileColorId { get; set; }
 
+        public string Color { get; set; }
+
+        public string URl { get; set; }
+        
         public virtual ICollection<LakeTileLakeTileColor> LakeTileLakeTileColors { get; set; }
     }
 }

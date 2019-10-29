@@ -19,24 +19,37 @@ namespace LanternsDotNet.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LanternCards",
+                name: "LakeTileColor",
                 columns: table => new
                 {
-                    LanternCardId = table.Column<Guid>(nullable: false)
+                    LakeTileColorId = table.Column<Guid>(nullable: false),
+                    Color = table.Column<string>(nullable: true),
+                    LakeTileId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LanternCards", x => x.LanternCardId);
+                    table.PrimaryKey("PK_LakeTileColor", x => x.LakeTileColorId);
+                    table.ForeignKey(
+                        name: "FK_LakeTileColor_LakeTiles_LakeTileId",
+                        column: x => x.LakeTileId,
+                        principalTable: "LakeTiles",
+                        principalColumn: "LakeTileId",
+                        onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LakeTileColor_LakeTileId",
+                table: "LakeTileColor",
+                column: "LakeTileId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "LakeTiles");
+                name: "LakeTileColor");
 
             migrationBuilder.DropTable(
-                name: "LanternCards");
+                name: "LakeTiles");
         }
     }
 }
