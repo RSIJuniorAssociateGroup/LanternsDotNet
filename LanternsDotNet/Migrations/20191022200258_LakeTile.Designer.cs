@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LanternsDotNet.Migrations
 {
     [DbContext(typeof(LanternContext))]
-    [Migration("20191010174526_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20191022200258_LakeTile")]
+    partial class LakeTile
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,14 +31,27 @@ namespace LanternsDotNet.Migrations
                     b.ToTable("LakeTiles");
                 });
 
-            modelBuilder.Entity("LanternsDotNet.Models.LanternCard", b =>
+            modelBuilder.Entity("LanternsDotNet.Models.LakeTileColor", b =>
                 {
-                    b.Property<Guid>("LanternCardId")
+                    b.Property<Guid>("LakeTileColorId")
                         .ValueGeneratedOnAdd();
 
-                    b.HasKey("LanternCardId");
+                    b.Property<string>("Color");
 
-                    b.ToTable("LanternCards");
+                    b.Property<Guid?>("LakeTileId");
+
+                    b.HasKey("LakeTileColorId");
+
+                    b.HasIndex("LakeTileId");
+
+                    b.ToTable("LakeTileColor");
+                });
+
+            modelBuilder.Entity("LanternsDotNet.Models.LakeTileColor", b =>
+                {
+                    b.HasOne("LanternsDotNet.Models.LakeTile")
+                        .WithMany("Colors")
+                        .HasForeignKey("LakeTileId");
                 });
 #pragma warning restore 612, 618
         }
