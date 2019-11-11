@@ -22,6 +22,7 @@ namespace LanternsDotNet.Controllers
 
         // GET: api/LakeTileColors
         [HttpGet]
+        [Route("GetLakeTileColor")]
         public async Task<ActionResult<IEnumerable<LakeTileColor>>> GetLakeTileColor()
         {
             return await _context.LakeTileColor.ToListAsync();
@@ -29,6 +30,7 @@ namespace LanternsDotNet.Controllers
 
         // GET: api/LakeTileColors/5
         [HttpGet("{id}")]
+        [Route("GetLakeTileColors")]
         public async Task<ActionResult<LakeTileColor>> GetLakeTileColor(Guid id)
         {
             var lakeTileColor = await _context.LakeTileColor.FindAsync(id);
@@ -41,7 +43,7 @@ namespace LanternsDotNet.Controllers
             return lakeTileColor;
         }
 
-        // PUT: api/LakeTileColors/5
+        /* PUT: api/LakeTileColors/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutLakeTileColor(Guid id, LakeTileColor lakeTileColor)
         {
@@ -101,5 +103,6 @@ namespace LanternsDotNet.Controllers
         {
             return _context.LakeTileColor.Any(e => e.LakeTileColorId == id);
         }
+        */
     }
 }

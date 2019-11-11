@@ -43,7 +43,7 @@ namespace LanternsDotNet.Controllers
             return lakeTile;
         }
 
-        // PUT: api/LakeTiles/5
+        /* PUT: api/LakeTiles/5
         [HttpPut("{id}")]
         [Route("PutLakeTile")]
         public async Task<IActionResult> PutLakeTile(Guid id, LakeTile lakeTile)
@@ -106,5 +106,6 @@ namespace LanternsDotNet.Controllers
         {
             return _context.LakeTiles.Any(e => e.LakeTileId == id);
         }
+        */
     }
 }
